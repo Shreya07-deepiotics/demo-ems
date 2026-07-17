@@ -1,0 +1,18 @@
+export const payslips = [
+  { id: 1, month: 'June 2025', year: 2025, basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, esic: 0, tds: 8500, professional_tax: 200, total_deductions: 16200, net_pay: 80400, status: 'paid', paidOn: '2025-06-30' },
+  { id: 2, month: 'May 2025', year: 2025, basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, esic: 0, tds: 8500, professional_tax: 200, total_deductions: 16200, net_pay: 80400, status: 'paid', paidOn: '2025-05-31' },
+  { id: 3, month: 'April 2025', year: 2025, basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, esic: 0, tds: 8500, professional_tax: 200, total_deductions: 16200, net_pay: 80400, status: 'paid', paidOn: '2025-04-30' },
+  { id: 4, month: 'March 2025', year: 2025, basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, esic: 0, tds: 9200, professional_tax: 200, total_deductions: 16900, net_pay: 79700, status: 'paid', paidOn: '2025-03-31' },
+  { id: 5, month: 'February 2025', year: 2025, basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, esic: 0, tds: 9200, professional_tax: 200, total_deductions: 16900, net_pay: 79700, status: 'paid', paidOn: '2025-02-28' },
+  { id: 6, month: 'January 2025', year: 2025, basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, esic: 0, tds: 9200, professional_tax: 200, total_deductions: 16900, net_pay: 79700, status: 'paid', paidOn: '2025-01-31' },
+];
+
+export const payrollTable = [
+  { id: 1, name: 'Arjun Sharma', avatar: 'AS', designation: 'Sr. Software Engineer', department: 'Engineering', basic: 62500, hra: 25000, da: 6250, medical: 1250, conveyance: 1600, gross: 96600, pf: 7500, tds: 8500, professional_tax: 200, total_deductions: 16200, net_pay: 80400, status: 'processed' },
+  { id: 2, name: 'Priya Mehta', avatar: 'PM', designation: 'Engineering Manager', department: 'Engineering', basic: 90000, hra: 36000, da: 9000, medical: 1250, conveyance: 1600, gross: 137850, pf: 10800, tds: 22000, professional_tax: 200, total_deductions: 33000, net_pay: 104850, status: 'processed' },
+  { id: 3, name: 'Rohit Verma', avatar: 'RV', designation: 'Team Lead - Backend', department: 'Engineering', basic: 72500, hra: 29000, da: 7250, medical: 1250, conveyance: 1600, gross: 111600, pf: 8700, tds: 12500, professional_tax: 200, total_deductions: 21400, net_pay: 90200, status: 'processed' },
+  { id: 4, name: 'Sneha Patel', avatar: 'SP', designation: 'HR Business Partner', department: 'Human Resources', basic: 55000, hra: 22000, da: 5500, medical: 1250, conveyance: 1600, gross: 85350, pf: 6600, tds: 7200, professional_tax: 200, total_deductions: 14000, net_pay: 71350, status: 'pending' },
+  { id: 5, name: 'Kavya Reddy', avatar: 'KR', designation: 'Frontend Developer', department: 'Engineering', basic: 47500, hra: 19000, da: 4750, medical: 1250, conveyance: 1600, gross: 74100, pf: 5700, tds: 5500, professional_tax: 200, total_deductions: 11400, net_pay: 62700, status: 'pending' },
+  { id: 6, name: 'Aditya Kumar', avatar: 'AK', designation: 'DevOps Engineer', department: 'Engineering', basic: 57500, hra: 23000, da: 5750, medical: 1250, conveyance: 1600, gross: 89100, pf: 6900, tds: 8000, professional_tax: 200, total_deductions: 15100, net_pay: 74000, status: 'pending' },
+  { id: 7, name: 'Suresh Babu', avatar: 'SB', designation: 'Finance Analyst', department: 'Finance', basic: 50000, hra: 20000, da: 5000, medical: 1250, conveyance: 1600, gross: 77850, pf: 6000, tds: 6500, professional_tax: 200, total_deductions: 12700, net_pay: 65150, status: 'pending' },
+];

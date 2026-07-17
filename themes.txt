@@ -1,0 +1,56 @@
+Theme: "Professional Coffee & Cream"
+
+Build a bright, professional warm-tone design system. No dark backgrounds, no blue, no green, no pink/magenta. Use coffee, caramel, espresso, and light latte cream on a warm ivory base.
+
+Tokens (src/styles.css, Tailwind v4 @theme inline + oklch):
+
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.985 0.006 80);     /* warm ivory */
+  --foreground: oklch(0.18 0.015 50);      /* ink */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.015 50);
+
+  --primary: oklch(0.22 0.02 50);          /* near-black ink */
+  --primary-foreground: oklch(0.985 0.006 80);
+
+  --secondary: oklch(0.95 0.02 70);
+  --secondary-foreground: oklch(0.22 0.02 50);
+  --muted: oklch(0.95 0.015 70);
+  --muted-foreground: oklch(0.5 0.02 50);
+
+  --accent: oklch(0.5 0.06 60);            /* rich coffee */
+  --accent-foreground: oklch(1 0 0);
+
+  --border: oklch(0.9 0.012 75);
+  --input: oklch(0.9 0.012 75);
+  --ring: oklch(0.5 0.06 60);
+
+  /* brand accents */
+  --coffee: oklch(0.5 0.06 60);
+  --caramel: oklch(0.68 0.09 70);
+  --espresso: oklch(0.38 0.04 55);
+  --latte: oklch(0.82 0.07 85);
+
+  --gradient-sunset: linear-gradient(135deg, var(--caramel) 0%, var(--coffee) 60%, var(--espresso) 100%);
+  --gradient-warm: linear-gradient(180deg, var(--background) 0%, oklch(0.94 0.02 75) 100%);
+  --gradient-pop: linear-gradient(120deg, var(--latte), var(--coffee));
+
+  --shadow-pop: 0 18px 50px -22px oklch(0.35 0.05 60 / 0.35);
+  --shadow-soft: 0 6px 24px -12px oklch(0.3 0.04 55 / 0.15);
+}
+Typography: Fraunces (display, serif, italics for emphasis words) + Plus Jakarta Sans (body). Load via <link> in the root route head.
+
+Rules:
+
+All colors come from semantic tokens — never hard-code hex or text-white/bg-black in components.
+Use bg-gradient-sunset / text-gradient-sunset for hero accents, gold (bg-latte) for highlight chips, coffee for primary actions, espresso for deep contrast text.
+Cards: white bg-card, soft border, shadow-soft on rest → shadow-pop on hover, slight -translate-y-1 lift.
+Buttons: pill-shaped (rounded-full), ink-black primary CTAs, outlined-on-cream secondary CTAs.
+Nav: floating sticky pill with backdrop blur on warm-ivory.
+Sections alternate bg-background and bg-gradient-warm for rhythm.
+Decorative blurred blobs in coffee/caramel/latte for hero backgrounds (low opacity, large blur).
+Generous whitespace, serif display headlines with italic gradient accent words, sans-serif body, uppercase tracked eyebrows above section titles.
+Paste that into a new Lovable project and ask "apply this theme as the design system" — you'll get the same look.
+
