@@ -368,7 +368,7 @@ export default function EmployeeManagementPage() {
             <Input {...bind('name')} placeholder="e.g. Ravi Kumar" />
           </Field>
           <Field label="Email" required error={errors.email}>
-            <Input {...bind('email')} type="email" placeholder="name@deepiotics.com" />
+            <Input {...bind('email')} type="email" placeholder="name@ems.com" />
           </Field>
           <Field label="Phone">
             <Input {...bind('phone')} placeholder="+91 98765 00000" />

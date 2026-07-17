@@ -82,8 +82,8 @@ export default function Sidebar({ role, user, collapsed, setCollapsed, onLogout 
         </div>
         {!collapsed && (
           <div>
-            <p className="text-slate-900 dark:text-white font-extrabold text-sm leading-tight tracking-tight">Deepiotics</p>
-            <p className="text-slate-500 dark:text-slate-400 text-[11px] leading-tight">Private Limited · Indore</p>
+            <p className="text-slate-900 dark:text-white font-extrabold text-sm leading-tight tracking-tight">EMS</p>
+            <p className="text-slate-500 dark:text-slate-400 text-[11px] leading-tight">Employee Management System</p>
           </div>
         )}
       </div>

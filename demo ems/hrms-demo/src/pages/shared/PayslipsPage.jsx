@@ -73,7 +73,7 @@ export default function PayslipsPage({ user }) {
             <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl p-5 text-white">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-indigo-200 text-xs font-medium">Deepiotics Private Limited</p>
+                  <p className="text-indigo-200 text-xs font-medium">EMS — Employee Management System</p>
                   <p className="font-bold text-lg mt-1">{user?.name}</p>
                   <p className="text-indigo-200 text-sm">{user?.designation} · {user?.department}</p>
                 </div>

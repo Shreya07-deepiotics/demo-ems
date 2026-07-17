@@ -18,9 +18,9 @@ const permKeys = [
 
 
 
-export default function AdminDashboard({ user }) {
+export default function AdminDashboard({ user, defaultTab }) {
   const { toasts, removeToast, toast } = useToast();
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState(defaultTab || 'overview');
   const [permissions, setPermissions] = useState(rolesPermissions);
   const [leaveEntitlements, setLeaveEntitlements] = useState([
     { type: 'Casual Leave',       days: 12 },
@@ -31,12 +31,12 @@ export default function AdminDashboard({ user }) {
     { type: 'Compensatory Leave', days: 5 },
   ]);
   const [settings, setSettings] = useState({
-    companyName:      'Deepiotics Private Limited',
+    companyName:      'EMS',
     leavePolicy:      'Standard',
     workingDays:      '5',
     probationPeriod:  '3 months',
     noticePeriod:     '60 days',
-    hq:               'Indore, Madhya Pradesh',
+    hq:               'India',
   });
 
   const togglePermission = (role, key) => {

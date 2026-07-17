@@ -289,7 +289,7 @@ export default function EmployeeDashboard({ user }) {
             <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl p-5 text-white">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-indigo-200 text-xs">Deepiotics Private Limited</p>
+                  <p className="text-indigo-200 text-xs">EMS — Employee Management System</p>
                   <p className="font-bold text-lg">{user?.name}</p>
                   <p className="text-indigo-200 text-sm">{user?.designation} · {user?.department}</p>
                 </div>

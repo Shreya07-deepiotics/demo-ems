@@ -90,12 +90,12 @@ export default function Login({ onLogin }) {
               <Building2 size={24} className="text-white" />
             </div>
             <div className="text-left">
-              <h1 className="text-3xl font-bold text-white tracking-tight">Deepiotics</h1>
-              <p className="text-indigo-300 text-sm">Private Limited · Indore</p>
+              <h1 className="text-3xl font-bold text-white tracking-tight">EMS</h1>
+              <p className="text-indigo-300 text-sm">Employee Management System</p>
             </div>
           </div>
           <p className="text-slate-300 text-sm max-w-md mx-auto">
-            Employee Management System — Deepiotics Private Limited, Indore
+            Employee Management System — EMS
           </p>
         </div>
 
@@ -159,7 +159,7 @@ export default function Login({ onLogin }) {
         </div>
 
         <p className="text-center text-slate-500 text-xs mt-4">
-          UI Demo · Deepiotics Pvt. Ltd. · All data is mock/fictional
+          UI Demo · EMS — Simple Employee Management System · All data is mock/fictional
         </p>
       </div>
     </div>

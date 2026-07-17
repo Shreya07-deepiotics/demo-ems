@@ -55,18 +55,19 @@ export default function App() {
           <Route path="attendance" element={<AttendancePage user={user} role={role} />} />
           <Route path="leave" element={<LeavePage user={user} role={role} />} />
           <Route path="leave-approvals" element={<LeaveApprovalsPage user={user} role={role} />} />
-          <Route path="leave-management" element={<LeavePage user={user} role={role} />} />
+          <Route path="leave-management" element={<HRDashboard user={user} role={role} defaultTab="leaves" />} />
           <Route path="team" element={<TeamPage user={user} role={role} />} />
           <Route path="payslips" element={<PayslipsPage user={user} role={role} />} />
-          <Route path="finance/payroll" element={<PayslipsPage user={user} role={role} />} />
+          <Route path="payroll" element={<HRDashboard user={user} role={role} defaultTab="payroll" />} />
+          <Route path="finance/payroll" element={<HRDashboard user={user} role={role} defaultTab="payroll" />} />
           <Route path="appraisal" element={<AppraisalPage user={user} role={role} />} />
           <Route path="performance" element={<PerformancePage user={user} role={role} />} />
-          <Route path="employees" element={<HRDashboard user={user} role={role} />} />
-          <Route path="onboarding" element={<HRDashboard user={user} role={role} />} />
-          <Route path="analytics" element={<AdminDashboard user={user} role={role} />} />
-          <Route path="roles" element={<AdminDashboard user={user} role={role} />} />
+          <Route path="employees" element={<HRDashboard user={user} role={role} defaultTab="directory" />} />
+          <Route path="onboarding" element={<HRDashboard user={user} role={role} defaultTab="onboarding" />} />
+          <Route path="analytics" element={<AdminDashboard user={user} role={role} defaultTab="overview" />} />
+          <Route path="roles" element={<AdminDashboard user={user} role={role} defaultTab="roles" />} />
           <Route path="reports" element={<PerformancePage user={user} role={role} />} />
-          <Route path="settings" element={<AdminDashboard user={user} role={role} />} />
+          <Route path="settings" element={<AdminDashboard user={user} role={role} defaultTab="settings" />} />
           <Route path="admin/employees" element={<EmployeeManagementPage user={user} role={role} />} />
           <Route path="admin/leave-approvals" element={<AdminLeaveApprovalsPage user={user} role={role} />} />
           <Route path="*" element={<NotFound />} />
