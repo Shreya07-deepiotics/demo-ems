@@ -9,6 +9,7 @@ import HRDashboard from './pages/hr/HRDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import EmployeeManagementPage from './pages/admin/EmployeeManagementPage';
 import AdminLeaveApprovalsPage from './pages/admin/AdminLeaveApprovalsPage';
+import AdminPayrollPage from './pages/admin/AdminPayrollPage';
 import AttendancePage from './pages/shared/AttendancePage';
 import LeavePage from './pages/shared/LeavePage';
 import LeaveApprovalsPage from './pages/shared/LeaveApprovalsPage';
@@ -58,8 +59,8 @@ export default function App() {
           <Route path="leave-management" element={<HRDashboard user={user} role={role} defaultTab="leaves" />} />
           <Route path="team" element={<TeamPage user={user} role={role} />} />
           <Route path="payslips" element={<PayslipsPage user={user} role={role} />} />
-          <Route path="payroll" element={<HRDashboard user={user} role={role} defaultTab="payroll" />} />
-          <Route path="finance/payroll" element={<HRDashboard user={user} role={role} defaultTab="payroll" />} />
+          <Route path="payroll" element={<AdminPayrollPage user={user} role={role} />} />
+          <Route path="finance/payroll" element={<AdminPayrollPage user={user} role={role} />} />
           <Route path="appraisal" element={<AppraisalPage user={user} role={role} />} />
           <Route path="performance" element={<PerformancePage user={user} role={role} />} />
           <Route path="employees" element={<HRDashboard user={user} role={role} defaultTab="directory" />} />

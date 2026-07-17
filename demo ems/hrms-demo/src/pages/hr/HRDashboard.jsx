@@ -136,12 +136,11 @@ export default function HRDashboard({ user, defaultTab }) {
   const pendingLeaveCount = leaveItems.filter(a => a.actionStatus === 'pending').length;
 
   const tabs = [
-    { id: 'overview',   label: 'Overview',         icon: LayoutDashboard },
-    { id: 'directory',  label: 'Employees',         icon: Users,          count: employees.length },
-    { id: 'onboarding', label: 'Onboarding',        icon: UserPlus,       count: onboardingList.length },
-    { id: 'offboarding',label: 'Offboarding',       icon: UserMinus,      count: offboardingList.length },
-    { id: 'leaves',     label: 'Leave Management',  icon: ClipboardList,  count: pendingLeaveCount, alert: pendingLeaveCount > 0 },
-    { id: 'payroll',    label: 'Payroll',            icon: DollarSign },
+    { id: 'overview',   label: 'Overview',        icon: LayoutDashboard },
+    { id: 'directory',  label: 'Employees',        icon: Users,         count: employees.length },
+    { id: 'onboarding', label: 'Onboarding',       icon: UserPlus,      count: onboardingList.length },
+    { id: 'offboarding',label: 'Offboarding',      icon: UserMinus,     count: offboardingList.length },
+    { id: 'leaves',     label: 'Leave Management', icon: ClipboardList, count: pendingLeaveCount, alert: pendingLeaveCount > 0 },
   ];
 
   const inputCls = `w-full border border-slate-200 dark:border-slate-600 rounded-xl px-3 py-2 text-sm
