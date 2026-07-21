@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import AppLayout from './components/layout/AppLayout';
@@ -17,6 +16,7 @@ import TeamPage from './pages/shared/TeamPage';
 import PayslipsPage from './pages/shared/PayslipsPage';
 import AppraisalPage from './pages/shared/AppraisalPage';
 import PerformancePage from './pages/shared/PerformancePage';
+import { useAuth } from './context/AuthContext';
 
 function NotFound() {
   return (
@@ -28,16 +28,17 @@ function NotFound() {
 }
 
 export default function App() {
-  const [auth, setAuth] = useState(null); // { role, user }
+  const { currentUser, logout } = useAuth();
 
-  const handleLogin = (role, user) => setAuth({ role, user });
-  const handleLogout = () => setAuth(null);
+  const handleLogin = () => {}; // handled by AuthContext via Login page
+  const handleLogout = logout;
 
-  if (!auth) {
+  if (!currentUser) {
     return <Login onLogin={handleLogin} />;
   }
 
-  const { role, user } = auth;
+  const user = currentUser;
+  const role = currentUser.role;
 
   const DashboardComponent = {
     employee: EmployeeDashboard,

@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Users, TrendingDown, Clock, Briefcase, BarChart3, Shield, Settings, Activity } from 'lucide-react';
+import { Users, TrendingDown, Clock, Briefcase, BarChart3, Shield, Settings, Activity, UserCheck, XCircle, CheckCircle } from 'lucide-react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import Card, { CardHeader } from '../../components/ui/Card';
 import StatCard from '../../components/ui/StatCard';
 import Button from '../../components/ui/Button';
+import Badge from '../../components/ui/Badge';
 import { useToast, ToastContainer } from '../../components/ui/Toast';
 import { headcountByDept, attritionTrend, leaveTrend, orgStats, rolesPermissions } from '../../data/analytics';
+import { useAuth } from '../../context/AuthContext';
 
 const permKeys = [
   { key: 'canViewAllEmployees', label: 'View All Employees' },
@@ -20,6 +22,7 @@ const permKeys = [
 
 export default function AdminDashboard({ user, defaultTab }) {
   const { toasts, removeToast, toast } = useToast();
+  const { pendingAccounts, approveAccount, rejectAccount } = useAuth();
   const [activeTab, setActiveTab] = useState(defaultTab || 'overview');
   const [permissions, setPermissions] = useState(rolesPermissions);
   const [leaveEntitlements, setLeaveEntitlements] = useState([
@@ -52,9 +55,10 @@ export default function AdminDashboard({ user, defaultTab }) {
   };
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: Activity },
-    { id: 'roles', label: 'Roles & Permissions', icon: Shield },
-    { id: 'settings', label: 'Company Settings', icon: Settings },
+    { id: 'overview',  label: 'Overview',           icon: Activity },
+    { id: 'approvals', label: 'User Approvals',      icon: UserCheck, count: pendingAccounts.length, alert: pendingAccounts.length > 0 },
+    { id: 'roles',     label: 'Roles & Permissions', icon: Shield },
+    { id: 'settings',  label: 'Company Settings',    icon: Settings },
   ];
 
   return (
@@ -85,6 +89,13 @@ export default function AdminDashboard({ user, defaultTab }) {
           >
             <tab.icon size={15} />
             {tab.label}
+            {tab.count !== undefined && tab.count > 0 && (
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                tab.alert
+                  ? 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400'
+                  : 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400'
+              }`}>{tab.count}</span>
+            )}
           </button>
         ))}
       </div>
@@ -142,6 +153,92 @@ export default function AdminDashboard({ user, defaultTab }) {
               </LineChart>
             </ResponsiveContainer>
           </Card>
+        </div>
+      )}
+
+      {/* Roles & Permissions tab */}
+      {activeTab === 'approvals' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">User Registration Approvals</h2>
+              <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                New users must be approved within 24 hours of registration
+              </p>
+            </div>
+            {pendingAccounts.length > 0 && (
+              <span className="flex items-center gap-1.5 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold px-3 py-1.5 rounded-full border border-red-200 dark:border-red-700">
+                <Clock size={12} /> {pendingAccounts.length} pending
+              </span>
+            )}
+          </div>
+
+          {pendingAccounts.length === 0 ? (
+            <Card>
+              <div className="py-16 text-center">
+                <CheckCircle size={40} className="mx-auto mb-3 text-emerald-400" />
+                <p className="font-semibold text-slate-700 dark:text-slate-300">No pending registrations</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">All registration requests have been reviewed</p>
+              </div>
+            </Card>
+          ) : (
+            <div className="space-y-3">
+              {pendingAccounts.map(acc => {
+                const registeredAt = new Date(acc.registeredAt);
+                const deadline     = new Date(acc.approvalDeadline);
+                const now          = new Date();
+                const hoursLeft    = Math.max(0, Math.round((deadline - now) / (1000 * 60 * 60)));
+                const isUrgent     = hoursLeft <= 4;
+
+                return (
+                  <Card key={acc.id}>
+                    <div className="flex items-center justify-between gap-4 flex-wrap">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white font-bold text-base flex-shrink-0">
+                          {acc.avatar}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <p className="font-bold text-slate-900 dark:text-white">{acc.name}</p>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                              isUrgent
+                                ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-700'
+                                : 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-700'
+                            }`}>
+                              {hoursLeft}h left
+                            </span>
+                          </div>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">{acc.email}</p>
+                          <div className="flex items-center gap-3 mt-1.5 flex-wrap text-xs text-slate-500 dark:text-slate-400">
+                            <span className="capitalize font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-2 py-0.5 rounded-full">{acc.role}</span>
+                            <span>{acc.department}</span>
+                            <span>{acc.designation}</span>
+                            <span>Registered: {registeredAt.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex gap-2 flex-shrink-0">
+                        <Button variant="success" size="sm" icon={CheckCircle}
+                          onClick={() => {
+                            approveAccount(acc.id);
+                            toast(`${acc.name}'s account approved`, 'success');
+                          }}>
+                          Approve
+                        </Button>
+                        <Button variant="danger" size="sm" icon={XCircle}
+                          onClick={() => {
+                            rejectAccount(acc.id);
+                            toast(`${acc.name}'s registration rejected`, 'error');
+                          }}>
+                          Reject
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 
